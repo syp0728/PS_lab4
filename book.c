@@ -3,6 +3,7 @@
 #include <string.h>
 #include "book.h"
 
+
 #define MAX_BOOKS 100 // 최대 도서 수
 
 // 도서 정보 배열
