@@ -73,7 +73,16 @@ void deleteBook() {
 }
 
 void searchBook() {
+    char keyword[100];
+    printf("검색할 도서의 키워드를 입력하세요: ");
+    scanf("%s", &keyword);
 
+    printf("\n===== 검색 결과 =====\n");
+    for(int i=0; i<numBooks; i++){
+        if(strstr(books[i].title, keyword) != NULL || strstr(books[i].author, keyword) != NULL) {
+            printf("제목: %s | 저자: %s | 페이지 수: %d\n", books[i].title, books[i].author, books[i].pages);
+        }
+    }
 }
 
 void saveBooksToFile() {
