@@ -8,7 +8,6 @@ typedef struct {
     int pages;
 } Book;
 
-// void initBooks(); // 초기 도서 데이터 설정
 void addBook(); // 도서 추가
 void listBooks(); // 도서 목록 조회
 void updateBook(); // 도서 정보 수정

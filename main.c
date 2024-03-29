@@ -3,7 +3,6 @@
 
 int main() {
     int choice;
-    // initBooks(); // 초기 도서 데이터 설정
 
     do {
         printf("\n===== 도서 관리 프로그램 =====\n");
