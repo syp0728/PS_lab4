@@ -53,7 +53,23 @@ void updateBook() {
 }
 
 void deleteBook() {
+    char title[100];
+    printf("삭제할 도서의 제목을 입력하세요: ");
+    scanf("%s", &title);
 
+    for(int i=0; i<numBooks; i++){
+        if(strcmp(books[i].title, title) == 0){
+            for(int j=i; j<numBooks-1; j++){
+                strcpy(books[j].title, books[j+1].title);
+                strcpy(books[j].author, books[j+1].author);
+                strcpy(books[j].pages, books[j+1].pages);
+            }
+            numBooks--;
+            printf("도서가 삭제되었습니다.\n");
+            return;
+        }
+    }
+    printf("해당 제목의 도서를 찾을 수 없습니다.\n");
 }
 
 void searchBook() {
