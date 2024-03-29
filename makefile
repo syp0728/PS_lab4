@@ -1,17 +1,13 @@
 CC = gcc
-CFLAGS = -Wall -std=c99
+SRC = main.c book.c
+OBJ = $(SRC:.c=.o)
+EXEC = main
 
-SRCS = main.c book.c
-OBJS = $(SRCS:.c=.o)
-EXEC = book_manager
+$(EXEC): $(OBJ)
+	$(CC) -o $@ $^
 
-all: $(EXEC)
-
-$(EXEC): $(OBJS)
-    $(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
-
-%.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c %.h
+	$(CC) -c $<
 
 clean:
-    rm -f $(OBJS) $(EXEC)
+	rm -f $(OBJ) $(EXEC)

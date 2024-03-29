@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include "book.h"
 
-int main() {
+int main()
+{
     int choice;
 
-    do {
+    do
+    {
         printf("\n===== 도서 관리 프로그램 =====\n");
         printf("1. 도서 추가\n");
         printf("2. 도서 목록 조회\n");
@@ -15,28 +17,29 @@ int main() {
         printf("메뉴를 선택하세요: ");
         scanf("%d", &choice);
 
-        switch (choice) {
-            case 1:
-                addBook();
-                break;
-            case 2:
-                listBooks();
-                break;
-            case 3:
-                updateBook();
-                break;
-            case 4:
-                deleteBook();
-                break;
-            case 5:
-                searchBook();
-                break;
-            case 6:
-                saveBooksToFile();
-                printf("프로그램을 종료합니다.\n");
-                break;
-            default:
-                printf("잘못된 선택입니다. 다시 시도하세요.\n");
+        switch (choice)
+        {
+        case 1:
+            addBook();
+            break;
+        case 2:
+            listBooks();
+            break;
+        case 3:
+            updateBook();
+            break;
+        case 4:
+            deleteBook();
+            break;
+        case 5:
+            searchBook();
+            break;
+        case 6:
+            saveBooksToFile();
+            printf("프로그램을 종료합니다.\n");
+            break;
+        default:
+            printf("잘못된 선택입니다. 다시 시도하세요.\n");
         }
     } while (choice != 6);
 
