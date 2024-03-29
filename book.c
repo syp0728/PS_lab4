@@ -9,6 +9,7 @@
 Book books[MAX_BOOKS]; // Book 구조체 배열 선언
 int numBooks = 0; // 현재 도서 수
 
+// 도서 추가 
 void addBook() {
     if(numBooks >= MAX_BOOKS){
         printf("더 이상 도서를 추가할 수 없습니다. \n");
@@ -16,9 +17,9 @@ void addBook() {
     }
 
     printf("도서 제목: ");
-    scanf("%s", &books[numBooks].title); // 제목 입력
+    scanf(" %[^\n]", &books[numBooks].title); // 제목 입력
     printf("저자: ");
-    scanf("%s", &books[numBooks].author); // 저자 입력
+    scanf(" %[^\n]", &books[numBooks].author); // 저자 입력
     printf("페이지 수: ");
     scanf("%d", &books[numBooks].pages); // 페이지 수 입력
 
@@ -27,23 +28,26 @@ void addBook() {
 
 }
 
+// 도서 목록 
 void listBooks() {
     printf("\n===== 도서 목록 =====\n");
     for(int i = 0; i < numBooks; i++){
         printf("제목: %s | 저자: %s | 페이지 수: %d\n", books[i].title, books[i].author, books[i].pages);
     }
-
 }
 
+// 도서 수정
 void updateBook() {
     char title[100];
     printf("수정할 도서의 제목을 입력하세요: "); // 수정할 도서 
-    scanf("%s", title);
+    scanf(" %[^\n]", title);
 
     for(int i=0; i<numBooks; i++){
         if(strcmp(books[i].title, title) == 0){ // 입력된 도서와 일치하는 도서 찾기 (strcmp)
+            printf("새로운 책 제목: ");
+            scanf(" %[^\n]", &books[i].title);
             printf("새로운 저자: ");
-            scanf("%s", &books[i].author);
+            scanf(" %[^\n]", &books[i].author);
             printf("새로운 페이지 수: ");
             scanf("%d", &books[i].pages);
             printf("도서 정보가 수정되었습니다.\n");
@@ -52,10 +56,11 @@ void updateBook() {
     }
 }
 
+// 도서 삭제
 void deleteBook() {
     char title[100];
     printf("삭제할 도서의 제목을 입력하세요: "); // 삭제할 도서 제목
-    scanf("%s", &title);
+    scanf(" %[^\n]", title);
 
     for(int i=0; i<numBooks; i++){
         if(strcmp(books[i].title, title) == 0){ // 입력된 도서와 일치하는 도서 찾기 (strcmp)
@@ -72,10 +77,11 @@ void deleteBook() {
     printf("해당 제목의 도서를 찾을 수 없습니다.\n");
 }
 
+// 도서 검색
 void searchBook() {
     char keyword[100];
     printf("검색할 도서의 키워드를 입력하세요: "); // 검색할 키워드
-    scanf("%s", &keyword);
+    scanf(" %[^\n]", keyword);
 
     printf("\n===== 검색 결과 =====\n");
     for(int i=0; i<numBooks; i++){
@@ -85,6 +91,7 @@ void searchBook() {
     }
 }
 
+// 도서 리스트를 books.txt에 저장
 void saveBooksToFile() {
     FILE *file = fopen("books.txt", "w"); // 파일 열기
     if(file == NULL){
